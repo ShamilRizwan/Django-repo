@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="tbl" method="POST">
+        {% csrf_token %}
+        <label for="">Name</label>
+        <input type="text" name="nm"><br><br>
+        <label for="">Address</label>
+        <input type="text" name="adr"><br><br>
+        <input type="submit" name="btn">
+    </form>
+    <p>{{msg}}</p>
+    <form action="disp">
+        <table border="50">
+            <tr>
+                <td>Name</td>
+                <td>Address</td>
+            </tr>
+            {% for i in emp %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.address}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        <input type="submit" value="Display">
+    </form>
+
+    <form action="del" method="POST">
+        {% csrf_token %}
+        Enter the name to be deleted
+        <input type="text" name="nm2">
+        <input type="Submit" value="Delete"><br><br>
+    </form>
+    {{key}}
+
+    <form action="update" method="POST">
+        {% csrf_token %}
+        Oldname <input type="text" name="oldname"><br><br>
+        Newname <input type="text" name="newname"><br><br>
+        <input type="submit" value="ok"><br>
+    </form>
+    {{msg}}
+</body>
+</html>

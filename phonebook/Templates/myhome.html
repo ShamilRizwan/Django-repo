@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="phn" method="POST">
+        {% csrf_token %}
+        Enter the name <input type="text" name="na"><br><br>
+        Enter Your Number <input type="number" name="num"><br><br>
+        <input type="submit" name="save"><br><br>
+    </form>
+    {{msg}}
+
+    <form action="disp">
+        <table border="2">
+            <tr>
+                <td>Name</td>
+                <td>Number</td>
+            </tr>
+            {% for i in phn %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.number}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        <input type="submit" value="Display">
+    </form>
+
+    <form action="displ">
+        <table border="2">
+            <tr>
+                <td>Name</td>
+            </tr>
+            {% for i in phn %}
+            <tr>
+                <td>{{i.name}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+    </form>
+
+    <form action="del" method="POST">
+        {% csrf_token %}
+        Enter the name to be deleted
+        <input type="text" name="nadel"><br><br>
+        <input type="submit" value="Delete">
+    </form>
+    {{key}}
+
+    <form action="upd" method="POST">
+        {% csrf_token %}
+        Oldname <input type="text" name="oldn"><br><br>
+        Newname <input type="text" name="newn"><br><br>
+        <input type="submit" value="ok">
+    </form>
+    {{key}}
+</body>
+</html>

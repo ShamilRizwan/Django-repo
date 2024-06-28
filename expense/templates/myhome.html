@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{%static 'homestyle.css'%}" />
+</head>
+<body>
+    <h1>Expense <span>Tracker</span></h1>
+    <div class="container"></div>
+        <form action="balence" method="POST">
+            {% csrf_token %}
+            <h3>Enter the balance</h3> <input type="number" name="bal">
+            <input id="subok" type="Submit" class="btn" name="Ok"><br><br>
+        </form>
+</body>
+</html>
